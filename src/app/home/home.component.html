@@ -1,1 +1,16 @@
-<p>home works!</p>
+Hello: {{userName}} String Interpolation Example
+<br/>
+<button [disabled]="btnDisabled" >Click Me!</button>
+<br/>
+Proprty Bound:<input type="text" [value]="userName"/>
+<br/>
+Two Way Bound: <input type="text" [(ngModel)]="userName"/>
+
+<button (click)="DisplayHello($event)" >Click Me!</button>
+
+<label>FirstName:</label>
+<input type="text" [(ngModel)]="user.firstName"/>
+
+<label>Last Name:</label>
+<input type="text" [(ngModel)]="user.lastName"/>
+
