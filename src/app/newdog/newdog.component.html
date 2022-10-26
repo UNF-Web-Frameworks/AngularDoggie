@@ -1,0 +1,25 @@
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Image</label>
+    <input type="url" [(ngModel)]="newDog.imageUrl" class="form-control" id="txgImage" placeholder="www.fido.jpg">
+  </div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Dog Name</label>
+    <input type="text" [(ngModel)]="newDog.name" class="form-control" id="txtDogName" placeholder="Fido">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Breed</label>
+    <input type="text" [(ngModel)]="newDog.breed" class="form-control" id="txtBreed" placeholder="Lab">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Age</label>
+    <input type="number " [(ngModel)]="newDog.age" class="form-control" id="numAge" placeholder="5">
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" [(ngModel)]="newDog.muzzle" type="checkbox" value="" id="chkMuzzle">
+    <label class="form-check-label" for="flexCheckDefault">
+      Needs a Muzzle
+    </label>
+  </div>
+  <button type="button" class="btn btn-warning" (click)="MakeMeADog()">Make me a Dog</button>
+
+  
