@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Dog } from '../models/dog';
+import { DogkeeperService } from '../services/dogkeeper.service';
 
 @Component({
   selector: 'app-newdog',
@@ -9,14 +11,18 @@ import { Dog } from '../models/dog';
 export class NewdogComponent implements OnInit {
 
   newDog:Dog;
-  constructor() { 
+  constructor(private dogKeeperInstance:DogkeeperService, private titleSvc:Title) { 
     this.newDog = new Dog('','',0);
+    this.titleSvc.setTitle('New Dog Page');
   }
 
   ngOnInit(): void {
+   
   }
+  
   MakeMeADog()
   {
-    console.log(this.newDog);
+    this.dogKeeperInstance.AddDog(this.newDog);
+    alert('Dog Added');
   }
 }
