@@ -12,11 +12,13 @@ export class HomeComponent implements OnInit {
   myDogArray:Dog[];
   
   constructor(private dogKeeperInstance:DogkeeperService, private titleSvc:Title) { 
+    console.log('TEST Constructor');
     this.myDogArray = this.dogKeeperInstance.GetDogs();
 
   }
 
   ngOnInit(): void {
+    console.log('NG On It Test');
     this.myDogArray = this.dogKeeperInstance.GetDogs();
     this.titleSvc.setTitle('Home Page');
   }

@@ -1,13 +1,20 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Dog } from '../models/dog';
+import { Users } from '../models/users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DogkeeperService {
 
+  @Output() userLoggedIn = new EventEmitter<boolean>();
   myDogArray:Dog[] = [];
-    
+  userArray:Users[]=[{
+    userId:'jose',
+    password:'password',
+    fullName:'Jose Gomez'
+  }];
+  currentUser:Users|undefined;  
   constructor() {
     this.myDogArray=[];
     this.myDogArray.push(new Dog('Fido','Lab',6,false,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfQrv7kYoTL443HH05XANWLUvBnzWVAyr48lzIW5eE2IQRn8CXXN21jUckSp1hMeJLNHE&usqp=CAU'));
@@ -24,6 +31,32 @@ export class DogkeeperService {
   AddDog(dog:Dog)
   {
     this.myDogArray.push(dog);
+  }
+
+  Login(userId:string, pwd:string)
+  {
+    let foundUser=this.userArray.find(u=>u.userId==userId && u.password==pwd);
+    if(foundUser)
+    {
+      this.currentUser=foundUser;
+      this.userLoggedIn.emit(true);
+      return foundUser.fullName;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  GetCurrentUser()
+  {
+    return this.currentUser;
+  }
+
+  LogoutUser()
+  {
+    this.currentUser=undefined;
+    this.userLoggedIn.emit(false);
   }
 
 }

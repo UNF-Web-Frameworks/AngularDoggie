@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DogcardComponent } from './dogcard/dogcard.component';
 import { NewdogComponent } from './newdog/newdog.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     NavbarComponent,
     DogcardComponent,
-    NewdogComponent
+    NewdogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

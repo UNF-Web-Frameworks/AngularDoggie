@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DogcardComponent } from './dogcard/dogcard.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { NewdogComponent } from './newdog/newdog.component';
+import { AuthGService } from './services/auth-g.service';
 
 const routes: Routes = [
   {
@@ -15,7 +17,14 @@ const routes: Routes = [
   },
   {
     path:'NewDog',
-    component: NewdogComponent
+    component: NewdogComponent,
+    canActivate:[AuthGService]
+
+  },
+  
+  {
+    path:'Login',
+    component: LoginComponent
 
   }
 ];
