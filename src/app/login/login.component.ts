@@ -18,7 +18,23 @@ export class LoginComponent implements OnInit {
 
   Login()
   {
-    let result =this.dogKeeperSvc.Login(this.userName,this.password);
+    this.dogKeeperSvc.Login(this.userName, this.password).subscribe({
+      next: (data) => {
+        this.dogKeeperSvc.SetCurrentUser(data);
+        console.log(data);
+      },
+      error: (err) => {
+        console.log(err);
+        
+      },
+      complete: () => {
+        console.log('Complete')
+      }
+    });
+
+    // Old Hard Coded Login
+
+    /*let result =this.dogKeeperSvc.Login(this.userName,this.password);
     if(result)
     {
         this.router.navigate(['/']);
@@ -26,7 +42,7 @@ export class LoginComponent implements OnInit {
     else
     {
       this.errorOccured=true;
-    }
+    }*/
   }
 
 }

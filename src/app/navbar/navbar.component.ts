@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { Token } from '../models/token';
 import { Users } from '../models/users';
 import { DogkeeperService } from '../services/dogkeeper.service';
 
@@ -12,7 +13,7 @@ export class NavbarComponent implements OnInit {
  /* instructor feedback: WOW your stuff is neat!
  */
   constructor(private dogSvc:DogkeeperService, private router:Router) { }
-  currentUser:Users|undefined;
+  currentUser:Token|undefined;
   ngOnInit(): void {
     this.currentUser=this.dogSvc.GetCurrentUser();
     
