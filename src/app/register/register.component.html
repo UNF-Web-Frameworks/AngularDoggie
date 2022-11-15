@@ -1,0 +1,35 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="registrationFormGrp" class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Name</mat-label>
+              <input type="text" matInput formControlName="frmName" placeholder="John Smith">
+              <mat-error *ngIf="registrationFormGrp.get('frmName')!.hasError('required')">
+                Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <br/>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>UserName</mat-label>
+                <input type="text" matInput formControlName="frmUserName" placeholder="JSmith">
+                <mat-error *ngIf="registrationFormGrp.get('frmUserName')!.hasError('required')">
+                  Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>&nbsp;
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="frmPassword" placeholder="h4ck3r">
+                <mat-error *ngIf="registrationFormGrp.get('frmPassword')!.hasError('required')">
+                  Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <br/>
+            <button (click)="RegisterUser()" mat-fab aria-label="Example icon button with a heart icon">
+                <mat-icon [matTooltip]="tooltipBtn">how_to_reg</mat-icon>
+            </button>
+            <button (click)="Clear()" mat-fab aria-label="Example icon button with a heart icon">
+                <mat-icon matTooltip="Clear Form">delete_sweep</mat-icon>
+            </button>
+          </form>
+    </mat-card-content>
+</mat-card>

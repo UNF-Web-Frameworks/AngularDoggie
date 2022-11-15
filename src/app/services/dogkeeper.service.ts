@@ -36,8 +36,7 @@ export class DogkeeperService {
 
   Login(userId:string, pwd:string)
   {
- 
-    return this.httpClient.get<Token>(`${environment.serverEndpoint}/Handler/${userId}/${pwd}`);
+    return this.httpClient.post<Token>(`${environment.serverEndpoint}/Handler/Login`,{userName:userId,password:pwd});
   }
 
   SetCurrentUser(token:Token)

@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   password='';
   errorOccured=false;
   ngOnInit(): void {
+    
+
   }
 
   Login()
