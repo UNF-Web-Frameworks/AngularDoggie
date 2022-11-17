@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Dog } from '../models/dog';
+import { DogHandler } from '../models/dogHandler';
 import { Token } from '../models/token';
 import { Users } from '../models/users';
 
@@ -32,11 +33,13 @@ export class DogkeeperService {
   AddDog(dog:Dog)
   {
     this.myDogArray.push(dog);
+    //{headers:{Authorization:`Bearer ${this.currentUser?.token}`}}
+    return this.httpClient.post(`${environment.serverEndpoint}/Dog`,dog,{headers:{Authorization:`Bearer ${this.currentUser?.token}`}});
   }
 
   Login(userId:string, pwd:string)
   {
-    return this.httpClient.post<Token>(`${environment.serverEndpoint}/Handler/Login`,{userName:userId,password:pwd});
+    return this.httpClient.post<Token>(`${environment.serverEndpoint}/Handler/login`,{userName:userId,password:pwd});
   }
 
   SetCurrentUser(token:Token)
@@ -55,6 +58,13 @@ export class DogkeeperService {
   {
     this.currentUser=undefined;
     this.userLoggedIn.emit(false);
+  }
+
+  CreateHandler(name:String,userName:String,password:String)
+  {
+    let newUser= {name:name,userName:userName,password:password};
+
+    return this.httpClient.post<DogHandler>(`${environment.serverEndpoint}/handler`,newUser);
   }
 
 }

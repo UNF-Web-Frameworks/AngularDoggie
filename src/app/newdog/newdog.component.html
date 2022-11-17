@@ -14,12 +14,7 @@
     <label for="exampleFormControlInput1" class="form-label">Age</label>
     <input type="number " [(ngModel)]="newDog.age" class="form-control" id="numAge" placeholder="5">
   </div>
-  <div class="form-check">
-    <input class="form-check-input" [(ngModel)]="newDog.muzzle" type="checkbox" value="" id="chkMuzzle">
-    <label class="form-check-label" for="flexCheckDefault">
-      Needs a Muzzle
-    </label>
-  </div>
+  
   <button type="button" class="btn btn-warning" (click)="MakeMeADog()">Make me a Dog</button>
 
   

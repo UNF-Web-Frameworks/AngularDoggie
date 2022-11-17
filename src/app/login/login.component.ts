@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DogkeeperService } from '../services/dogkeeper.service';
 
 @Component({
@@ -9,12 +9,15 @@ import { DogkeeperService } from '../services/dogkeeper.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private dogKeeperSvc:DogkeeperService, private router:Router) { }
+  constructor(private dogKeeperSvc:DogkeeperService, private router:Router, private activatedRoute:ActivatedRoute) { }
   userName='';
   password='';
   errorOccured=false;
   ngOnInit(): void {
-    
+    this.activatedRoute.params.subscribe((params)=>{
+      console.log(params);
+      this.userName=params['userName'];
+    });
 
   }
 

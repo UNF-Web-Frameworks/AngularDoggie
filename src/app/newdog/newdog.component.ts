@@ -22,7 +22,15 @@ export class NewdogComponent implements OnInit {
   
   MakeMeADog()
   {
-    this.dogKeeperInstance.AddDog(this.newDog);
-    alert('Dog Added');
+    this.dogKeeperInstance.AddDog(this.newDog).subscribe({
+      next: (data) => {
+        console.log(data);
+        alert('Dog Added');
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+    
   }
 }
