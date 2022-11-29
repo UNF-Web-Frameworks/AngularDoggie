@@ -12,6 +12,8 @@ import { Users } from '../models/users';
 export class DogkeeperService {
 
   @Output() userLoggedIn = new EventEmitter<boolean>();
+  @Output('CurrentRoute') currRoute= new EventEmitter<string>();
+  @Output('XClusiveEvent') XClusive= new EventEmitter<string>();
   myDogArray:Dog[] = [];
  
   currentUser:Token|undefined;  

@@ -11,6 +11,8 @@ import { DogkeeperService } from '../services/dogkeeper.service';
 })
 export class RegisterComponent implements OnInit
 {
+  responseError=false;
+  ErrorMsg='';
   //emailFormControl = new FormControl('lol@lol.com', [Validators.required, Validators.email]);
   registrationFormGrp = new FormGroup(
     {
@@ -44,6 +46,8 @@ export class RegisterComponent implements OnInit
             },
             error: (err)=>
             {
+              this.responseError=true;
+              this.ErrorMsg=err.Message;
               this._snackBar.open(`Error: ${JSON.stringify(err)}`);
             }
           }

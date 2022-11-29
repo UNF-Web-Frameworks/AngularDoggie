@@ -18,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     DogcardComponent,
     NewdogComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import {  Router } from '@angular/router';
 import { Token } from '../models/token';
 import { Users } from '../models/users';
@@ -12,6 +12,7 @@ import { DogkeeperService } from '../services/dogkeeper.service';
 export class NavbarComponent implements OnInit {
  /* instructor feedback: WOW your stuff is neat!
  */
+ 
   constructor(private dogSvc:DogkeeperService, private router:Router) { }
   currentUser:Token|undefined;
   ngOnInit(): void {
@@ -27,6 +28,9 @@ export class NavbarComponent implements OnInit {
         this.currentUser=undefined;
         this.router.navigate(['/']);
       }
+    });
+    this.dogSvc.currRoute.subscribe((data)=>{
+      console.log(`Route Received at Nav: ${data}`);
     });
   }
 

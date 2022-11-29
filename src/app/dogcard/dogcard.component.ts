@@ -8,12 +8,19 @@ import { Dog } from '../models/dog';
 })
 export class DogcardComponent implements OnInit {
 
-  
+  @Input() color:string='';
   @Input() CurrentDog:Dog|undefined;
+  @Input() AddDirective:boolean;
   constructor() {
+    this.AddDirective=false;
    }
 
   ngOnInit(): void {
+  }
+
+  GetDirective()
+  {
+    return this.AddDirective;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Dog } from '../models/dog';
 import { DogkeeperService } from '../services/dogkeeper.service';
@@ -10,13 +10,16 @@ import { DogkeeperService } from '../services/dogkeeper.service';
 })
 export class HomeComponent implements OnInit {
   myDogArray:Dog[];
-  
+  color='blue';
+  @ViewChild('MyDiv') myDiv:HTMLInputElement |undefined;
+
   constructor(private dogKeeperInstance:DogkeeperService, private titleSvc:Title) { 
     console.log('TEST Constructor');
     this.myDogArray = this.dogKeeperInstance.GetDogs();
-
+    
   }
 
+  directive=true;
   ngOnInit(): void {
     console.log('NG On It Test');
     this.myDogArray = this.dogKeeperInstance.GetDogs();
@@ -26,4 +29,18 @@ export class HomeComponent implements OnInit {
   {
     return false;
   }
+
+  AddDirective()
+  {
+    this.directive=!this.directive;
+    return this.directive;
+  }
+
+  RaiseXClive()
+  {
+    this.dogKeeperInstance.XClusive.emit('purple');
+  }
+
+
+
 }
