@@ -10,6 +10,9 @@
               <mat-error *ngIf="registrationFormGrp.get('frmName')!.hasError('required')">
                 Name is <strong>required</strong>
               </mat-error>
+              <mat-error *ngIf="responseError">
+                {{ErrorMsg}}
+              </mat-error>
             </mat-form-field>
             <br/>
             <mat-form-field class="example-full-width" appearance="fill">
