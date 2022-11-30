@@ -13,7 +13,7 @@ export class HighlightDirective {
     
     this.dogSvc.XClusive.subscribe((data)=>{
       this.appHighlight=data;
-    })
+    });
   }
 
   @HostListener('mouseenter') onMouseEnter()

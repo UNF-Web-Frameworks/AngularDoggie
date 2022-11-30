@@ -14,6 +14,7 @@ export class DogkeeperService {
   @Output() userLoggedIn = new EventEmitter<boolean>();
   @Output('CurrentRoute') currRoute= new EventEmitter<string>();
   @Output('XClusiveEvent') XClusive= new EventEmitter<string>();
+  @Output('SelectRandom') Select= new EventEmitter<number>();
   myDogArray:Dog[] = [];
  
   currentUser:Token|undefined;  

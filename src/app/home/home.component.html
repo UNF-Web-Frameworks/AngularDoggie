@@ -1,7 +1,7 @@
 <div class="container text-center">
     <div class="row">
-      <div #MyDiv class="col" *ngFor="let currentDog of myDogArray">
-        <app-dogcard [CurrentDog]="currentDog" [color]="color" [AddDirective]="AddDirective()" ></app-dogcard>
+      <div #MyDiv class="col" *ngFor="let currentDog of myDogArray;let indexOfelement=index;">
+        <app-dogcard [CurrentDog]="currentDog" [color]="color" [AddDirective]="AddDirective()" [indexOfelement]="indexOfelement" ></app-dogcard>
       <!--
         <app-dogcard [CurrentDog]="myDogArray[0]" *ngIf="!myDogArray[0].muzzle"></app-dogcard>
       </div>

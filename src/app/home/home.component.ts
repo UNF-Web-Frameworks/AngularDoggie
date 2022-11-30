@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 
   RaiseXClive()
   {
-    this.dogKeeperInstance.XClusive.emit('purple');
+    this.dogKeeperInstance.Select.emit(Math.floor(Math.random() * this.myDogArray.length));
   }
 
 

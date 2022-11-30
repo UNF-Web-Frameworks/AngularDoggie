@@ -19,6 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HighlightDirective } from './directives/highlight.directive';
+import { RandomSelectionDirective } from './directives/random-selection.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     NewdogComponent,
     LoginComponent,
     RegisterComponent,
-    HighlightDirective
+    HighlightDirective,
+    RandomSelectionDirective
   ],
   imports: [
     BrowserModule,

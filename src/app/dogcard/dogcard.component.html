@@ -1,23 +1,6 @@
-<div *ngIf="!GetDirective()" class="card" style="width: 18rem;" style="margin-bottom: 10px;" >
-  <img [src]="CurrentDog?.imageUrl" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{CurrentDog?.name}}</h5>
-    <p class="card-text">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col">
-          Breed:{{CurrentDog?.breed}}
-        </div>
-        <div class="col">
-          Age: {{CurrentDog?.age}}
-        </div >
-        
-      </div>
-    </div>
-  </div>
-</div>
 
-<div *ngIf="GetDirective()" class="card" style="width: 18rem;" style="margin-bottom: 10px;" [appHighlight]="color">
+
+<div class="card" style="width: 18rem;" style="margin-bottom: 10px;" [appHighlight]="color">
   <img [src]="CurrentDog?.imageUrl" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{CurrentDog?.name}}</h5>
@@ -30,7 +13,7 @@
         <div class="col">
           Age: {{CurrentDog?.age}}
         </div >
-        
+        <div [appRandomSelection]="indexOfelement">Hi</div>
       </div>
     </div>
   </div>

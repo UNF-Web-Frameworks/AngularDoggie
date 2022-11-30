@@ -11,6 +11,7 @@ export class DogcardComponent implements OnInit {
   @Input() color:string='';
   @Input() CurrentDog:Dog|undefined;
   @Input() AddDirective:boolean;
+  @Input() indexOfelement:number=0;
   constructor() {
     this.AddDirective=false;
    }
