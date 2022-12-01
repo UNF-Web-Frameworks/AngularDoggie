@@ -19,6 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HighlightDirective } from './directives/highlight.directive';
+import { HtmlPlayComponent } from './html-play/html-play.component';
+import { AppendHtmlDirective } from './directives/append-html.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { HighlightDirective } from './directives/highlight.directive';
     NewdogComponent,
     LoginComponent,
     RegisterComponent,
-    HighlightDirective
+    HighlightDirective,
+    HtmlPlayComponent,
+    AppendHtmlDirective
   ],
   imports: [
     BrowserModule,

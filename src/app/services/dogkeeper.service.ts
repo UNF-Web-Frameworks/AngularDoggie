@@ -1,10 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Dog } from '../models/dog';
 import { DogHandler } from '../models/dogHandler';
 import { Token } from '../models/token';
 import { Users } from '../models/users';
+import { of } from 'rxjs';
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +27,11 @@ export class DogkeeperService {
     this.myDogArray.push(new Dog('Fifi','German Shepperd',1,true,'https://images.saymedia-content.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTc0MDcyMTY0NTk1NTQxNDQ5/german-shepherd-puppy-guide.jpg'));
     let tokenInstance = localStorage.getItem('token');
     this.currentUser = tokenInstance?JSON.parse(tokenInstance):null;
+    if(this.currentUser)
+    {
+      var decoded = jwt_decode(this.currentUser.token);
+      console.log(decoded);
+    }
   }
 
   GetDogs()
@@ -35,8 +42,18 @@ export class DogkeeperService {
   AddDog(dog:Dog)
   {
     this.myDogArray.push(dog);
-    //{headers:{Authorization:`Bearer ${this.currentUser?.token}`}}
-    return this.httpClient.post(`${environment.serverEndpoint}/Dog`,dog,{headers:{Authorization:`Bearer ${this.currentUser?.token}`}});
+    let myCurrentTokenString=localStorage.getItem('token');
+    let header=new HttpHeaders();
+    if(myCurrentTokenString)
+    {
+      let myCurrentTokenObj: Token = JSON.parse(myCurrentTokenString) as Token;
+      
+      header=header.set('Authorization',`Bearer ${myCurrentTokenObj.token}`);
+      
+    }
+    return this.httpClient.post(`${environment.serverEndpoint}/Dog`,dog,{headers:header});
+    
+    
   }
 
   Login(userId:string, pwd:string)
